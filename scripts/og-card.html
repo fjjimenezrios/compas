@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body { width: 1200px; height: 630px; overflow: hidden; background: radial-gradient(circle at 80% 50%, #2a1a16 0%, #14100e 60%); color: #f4ece5; font-family: Inter, sans-serif; display: flex; align-items: center; padding: 0 80px; gap: 60px; }
+  .text { flex: 1; }
+  .kicker { color: #dba646; font-weight: 600; font-size: 26px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 18px; }
+  h1 { font-family: Fraunces, Georgia, serif; font-weight: 800; font-size: 150px; line-height: 1; letter-spacing: -.02em; }
+  p { margin-top: 28px; font-size: 34px; line-height: 1.35; color: #a8978b; max-width: 560px; }
+  p b { color: #f4ece5; font-weight: 600; }
+  svg { width: 420px; height: 420px; flex: none; }
+</style>
+</head>
+<body>
+  <div class="text">
+    <div class="kicker">Flamenco</div>
+    <h1>Compás</h1>
+    <p>Aprende los <b>acentos</b> de cada palo: rueda, metrónomo y guías.</p>
+  </div>
+  <svg viewBox="-110 -110 220 220" id="wheel"></svg>
+<script>
+  const accents = new Set([3, 6, 8, 10, 12]);
+  const svg = document.getElementById("wheel");
+  let html = '<circle r="92" fill="none" stroke="#3a2d27" stroke-width="2"/>';
+  for (let n = 1; n <= 12; n++) {
+    const a = (n / 12) * 2 * Math.PI - Math.PI / 2;
+    const x = 92 * Math.cos(a), y = 92 * Math.sin(a);
+    const hit = accents.has(n);
+    html += `<circle cx="${x}" cy="${y}" r="${hit ? 15 : 8}" fill="${hit ? "#e0303f" : "#4a3a32"}"/>`;
+    html += `<text x="${x * 0.68}" y="${y * 0.68 + 7}" text-anchor="middle" font-family="Inter" font-weight="600" font-size="20" fill="${hit ? "#dba646" : "#a8978b"}">${n}</text>`;
+  }
+  svg.innerHTML = html;
+</script>
+</body>
+</html>
