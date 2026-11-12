@@ -22,7 +22,7 @@ function MetronomeBody({ palo, palos }: { palo: Palo; palos: Palo[] }) {
   const [active, setActive] = useState(false);
 
   const form = forms.find((f) => f.id === formId)!;
-  const cycleLen = palo.cycle_len ?? 4;
+  const cycleLen = form.cycle_len ?? palo.cycle_len ?? 4;
   const countStart = startOverride ?? form.count_start;
   const [lo, hi] = tempoBounds(palo.tempo_bpm);
 
@@ -44,6 +44,7 @@ function MetronomeBody({ palo, palos }: { palo: Palo; palos: Palo[] }) {
         <p className="muted">Cada palo, con sus acentos. Pulsa espacio para empezar y parar.</p>
       </header>
 
+      <span className="eyebrow">Palo</span>
       <div className="chips" role="group" aria-label="Palo">
         {palos.map((p) => (
           <a key={p.id} className="chip" href={`#metronomo/${p.id}`} aria-pressed={p.id === palo.id}>

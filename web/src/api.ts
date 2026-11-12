@@ -73,6 +73,8 @@ export type Form = {
   weak?: number[];
   offbeats?: boolean;
   count_start: number;
+  /** Overrides the palo's cycle when a form lives on a different one (the rumba's 3+3+2 over 8 beats). */
+  cycle_len?: number;
   explain: string;
   sources: string[];
 };

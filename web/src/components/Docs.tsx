@@ -74,7 +74,7 @@ function FormCard(props: { palo: Palo; form: Form; bpm: number; active: boolean;
   return (
     <article className="panel form-card" aria-label={form.label}>
       <div className="form-wheel">
-        <MetronomeWheel cycleLen={palo.cycle_len ?? 4} form={form} countStart={form.count_start} bpm={bpm} active={active} />
+        <MetronomeWheel cycleLen={form.cycle_len ?? palo.cycle_len ?? 4} form={form} countStart={form.count_start} bpm={bpm} active={active} />
       </div>
       <div className="form-text">
         <h3>{form.label}</h3>

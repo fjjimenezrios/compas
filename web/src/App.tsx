@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ChordsPage } from "./components/ChordsPage";
 import { DocPalo, DocsIndex } from "./components/Docs";
 import { Library } from "./components/Library";
 import { MetronomePage } from "./components/MetronomePage";
@@ -9,13 +10,15 @@ export type Route =
   | { view: "library" }
   | { view: "song"; slug: string }
   | { view: "docs"; id?: string }
-  | { view: "metronome"; id?: string };
+  | { view: "metronome"; id?: string }
+  | { view: "chords"; tab?: string };
 
 export function parseRoute(hash: string): Route {
   const path = decodeURIComponent(hash.replace(/^#/, ""));
   const [head, id] = path.split("/");
   if (head === "doc") return { view: "docs", id };
   if (head === "metronomo") return { view: "metronome", id };
+  if (head === "acordes") return { view: "chords", tab: id };
   return path ? { view: "song", slug: path } : { view: "library" };
 }
 
@@ -23,6 +26,7 @@ const NAV: { view: Route["view"]; href: string; label: string }[] = [
   { view: "library", href: "#", label: "Biblioteca" },
   { view: "docs", href: "#doc", label: "Documentación" },
   { view: "metronome", href: "#metronomo", label: "Metrónomo" },
+  { view: "chords", href: "#acordes", label: "Acordes" },
 ];
 
 function ThemeToggle() {
@@ -64,6 +68,8 @@ function Page({ route }: { route: Route }) {
       return route.id ? <DocPalo key={route.id} id={route.id} /> : <DocsIndex />;
     case "metronome":
       return <MetronomePage paloId={route.id} />;
+    case "chords":
+      return <ChordsPage tab={route.tab} />;
     default:
       return <Library />;
   }
