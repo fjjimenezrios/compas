@@ -40,6 +40,14 @@ def cmd_onsets(args) -> None:
     log.info("Capas analizadas: %s", ", ".join(layers))
 
 
+def cmd_sections(args) -> None:
+    dirs = [Path(d) for d in args.song_dir] or sorted(d for d in SONGS_DIR.iterdir() if (d / "meta.json").exists())
+    for d in dirs:
+        sections = pipeline.analyze_sections(d)
+        singing = sum(s["end"] - s["start"] for s in sections if s["kind"] == "cante")
+        log.info("%s: %d secciones, %.0f s de cante", d.name, len(sections), singing)
+
+
 def cmd_synth(args) -> None:
     palo = load_palo("bulerias")
     y, _, _ = synth.compas(sr=44100)
@@ -79,6 +87,10 @@ def main() -> None:
     p = sub.add_parser("onsets", help="Recalcula ataques y formas de onda (p. ej. tras añadir un stem a mano)")
     p.add_argument("song_dir")
     p.set_defaults(func=cmd_onsets)
+
+    p = sub.add_parser("sections", help="Detecta cante y toque de una canción (todas si no se indica ninguna)")
+    p.add_argument("song_dir", nargs="*")
+    p.set_defaults(func=cmd_sections)
 
     p = sub.add_parser("synth", help="Genera y analiza la canción sintética de prueba")
     p.set_defaults(func=cmd_synth)

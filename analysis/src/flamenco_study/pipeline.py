@@ -12,6 +12,7 @@ import numpy as np
 from flamenco_study import beats, cycles, onsets, overrides
 from flamenco_study.decode import ANALYSIS_SR, load_mono, to_wav
 from flamenco_study.separate import DEFAULT_MODEL, separate
+from flamenco_study.sections import detect_sections
 
 log = logging.getLogger(__name__)
 
@@ -106,6 +107,17 @@ def analyze_layers(song_dir: Path, grid: dict) -> list[str]:
     return names
 
 
+def analyze_sections(song_dir: Path) -> list[dict]:
+    stems = song_dir / "stems"
+    vocals = next((p for p in stems.glob("vocals.*")), None)
+    if vocals is None:
+        sections: list[dict] = []
+    else:
+        sections = detect_sections(vocals, next((p for p in stems.glob("guitar.*")), None))
+    write_json(song_dir / "analysis" / "sections.json", sections)
+    return sections
+
+
 def analyze(
     audio: Path,
     palo: dict,
@@ -139,8 +151,10 @@ def analyze(
     write_json(out_dir / "analysis" / "beats.json", beats_json)
     write_json(out_dir / "analysis" / "grid.json", grid)
 
-    log.info("4/5 Detectando ataques por capa")
+    log.info("4/5 Detectando ataques y secciones")
     layers = analyze_layers(out_dir, grid)
+
+    analyze_sections(out_dir)
 
     log.info("5/5 Guardando meta.json")
     meta_path = out_dir / "meta.json"
