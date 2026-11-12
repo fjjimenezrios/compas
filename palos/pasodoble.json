@@ -1,0 +1,27 @@
+{
+  "name": "Pasodoble de carnaval",
+  "family": "binario",
+  "cycle_len": 4,
+  "accents": null,
+  "count_start": 1,
+  "subdivision": 2,
+  "tempo_bpm": null,
+  "status": "TODO",
+  "sources": [],
+  "todo": "Ciclo de 4 según el usuario; acentos y tempo por rellenar solo con fuentes verificadas.",
+  "default_bpm": 120,
+  "summary": "Marcha binaria de origen militar, adaptada por las agrupaciones del Carnaval de Cádiz.",
+  "forms": [
+    {
+      "id": "marcha",
+      "label": "Marcha · fuerte-débil",
+      "accents": [
+        1,
+        3
+      ],
+      "count_start": 1,
+      "explain": "Marcha de unos 120 pasos por minuto. Aquí se cuenta en 4, como indicaste, con fuertes en 1 y 3. Es orientativo: ninguna fuente consultada detalla los acentos.",
+      "sources": []
+    }
+  ]
+}

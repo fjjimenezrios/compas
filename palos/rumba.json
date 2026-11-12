@@ -1,0 +1,12 @@
+{
+  "name": "Rumba",
+  "family": "binario",
+  "cycle_len": 4,
+  "accents": null,
+  "count_start": 1,
+  "subdivision": 2,
+  "tempo_bpm": null,
+  "status": "TODO",
+  "sources": [],
+  "todo": "Rellenar ciclo/acentos/tempo solo con fuentes verificadas (hito 6)."
+}

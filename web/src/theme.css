@@ -1,0 +1,109 @@
+/* Tablao de noche: madera casi negra, un solo rojo de mantón para lo que manda en el compás,
+   albero para lo secundario (contratiempos, selección). Modo claro: cal blanca. */
+:root {
+  --bg: #14100e;
+  --surface: #1c1613;
+  --surface-2: #261d19;
+  --line: #3a2d27;
+  --fg: #f4ece5;
+  --muted: #a8978b;
+  --accent: #e0303f;
+  --accent-soft: #4a1c20;
+  --albero: #dba646;
+  --on-accent: #ffffff;
+
+  --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --body: "Inter", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+
+  --radius: 10px;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f7f3ee;
+    --surface: #ffffff;
+    --surface-2: #f0e9e1;
+    --line: #e2d8ce;
+    --fg: #1c1411;
+    --muted: #75645a;
+    --accent: #b81d2c;
+    --accent-soft: #f6d9dc;
+    --albero: #a46f12;
+    color-scheme: light;
+  }
+}
+
+/* Same light values: the topbar toggle sets data-theme and must win over the OS setting both ways. */
+:root[data-theme="light"] {
+  --bg: #f7f3ee;
+  --surface: #ffffff;
+  --surface-2: #f0e9e1;
+  --line: #e2d8ce;
+  --fg: #1c1411;
+  --muted: #75645a;
+  --accent: #b81d2c;
+  --accent-soft: #f6d9dc;
+  --albero: #a46f12;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.55 var(--body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; line-height: 1.1; }
+p { margin: 0; }
+a { color: inherit; }
+
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--albero); outline-offset: 2px; }
+
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.eyebrow {
+  font: 500 11px/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Lunares: solo textura de estados vacíos. */
+.lunares {
+  background-image: radial-gradient(var(--accent-soft) 22%, transparent 23%);
+  background-size: 22px 22px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font: 500 13px/1 var(--mono);
+}
+.chip[aria-pressed="true"] { border-color: var(--albero); color: var(--albero); }
+.chip.accent { border-color: var(--accent); color: var(--accent); }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+svg text { fill: var(--fg); font-family: var(--mono); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

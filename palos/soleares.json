@@ -1,0 +1,46 @@
+{
+  "name": "Soleares",
+  "family": "12 tiempos",
+  "cycle_len": 12,
+  "accents": [
+    3,
+    6,
+    8,
+    10,
+    12
+  ],
+  "count_start": 1,
+  "subdivision": 2,
+  "tempo_bpm": [
+    60,
+    120
+  ],
+  "status": "verified",
+  "sources": [
+    "https://studioflamenco.com/soleares",
+    "https://revistas.um.es/flamenco/article/download/349671/254971/1200651"
+  ],
+  "tempo_note": "Rango orientativo; solo se usa para corregir errores de doble/mitad de tempo.",
+  "default_bpm": 90,
+  "summary": "Ciclo de 12 tiempos lento. De él heredan el compás las bulerías y las alegrías.",
+  "forms": [
+    {
+      "id": "clasico",
+      "label": "Clásico · 3 6 8 10 12",
+      "accents": [
+        3,
+        6,
+        8,
+        10,
+        12
+      ],
+      "count_start": 1,
+      "explain": "Ciclo de 12 tiempos con acentos en 3, 6, 8, 10 y 12. Es mucho más lento que la bulería. Las fuentes avisan de que el patrón de acentos ha cambiado con los años.",
+      "sources": [
+        "https://studioflamenco.com/soleares",
+        "https://revistas.um.es/flamenco/article/download/349671/254971/1200651",
+        "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
+      ]
+    }
+  ]
+}

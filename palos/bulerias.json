@@ -1,0 +1,97 @@
+{
+  "name": "Bulerías",
+  "family": "12 tiempos",
+  "cycle_len": 12,
+  "accents": [
+    3,
+    6,
+    8,
+    10,
+    12
+  ],
+  "count_start": 12,
+  "subdivision": 2,
+  "tempo_bpm": [
+    150,
+    240
+  ],
+  "status": "verified",
+  "sources": [
+    "https://richterguitar.com/flamenco-guitar/flamenco-guitar-toques-and-palos/bulerias",
+    "https://revistas.um.es/flamenco/article/download/349671/254971/1200651"
+  ],
+  "tempo_note": "Rango didáctico de aprendiendoaserguitarrista.com (150-240); Melodigging da 180-230.",
+  "accent_note": "Algunas fuentes dan el 7 en lugar del 6 (12, 3, 6/7, 8, 10). La cuenta empieza en 12.",
+  "default_bpm": 200,
+  "summary": "Palo festivo y rápido de Jerez. Ciclo de 12 tiempos que se cuenta desde el 12.",
+  "forms": [
+    {
+      "id": "tradicional",
+      "label": "Tradicional · 12 3 6 8 10",
+      "accents": [
+        12,
+        3,
+        6,
+        8,
+        10
+      ],
+      "count_start": 12,
+      "explain": "Se cuenta desde el 12, que es el «uno» real del ciclo. Los golpes fuertes caen en 12, 3, 6, 8 y 10. Truco para memorizarlo: un-dos-TRES, cua-cin-SEIS, sie-OCHO, nue-DIEZ, on-DOCE.",
+      "sources": [
+        "https://allflamenco.net/blog/guia-completa-del-baile-por-bulerias-historia-compas-y-figuras-clave/",
+        "https://esmuse.es/recursos/cajon-compas-bulerias.html",
+        "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
+      ]
+    },
+    {
+      "id": "variante",
+      "label": "Variante · 12 3 7 8 10",
+      "accents": [
+        12,
+        3,
+        7,
+        8,
+        10
+      ],
+      "count_start": 12,
+      "explain": "Segunda forma habitual: el acento del 6 pasa al 7, así que el 7 y el 8 suenan seguidos.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Buler%C3%ADas"
+      ]
+    },
+    {
+      "id": "al-seis",
+      "label": "Contada al 6 (Jerez)",
+      "accents": [
+        12,
+        6
+      ],
+      "weak": [
+        2,
+        4,
+        8,
+        10
+      ],
+      "count_start": 12,
+      "explain": "En Jerez se cuenta de 6 en 6 y el ciclo se parte en dos mitades. El 12 y el 6 pesan; el 2, el 4, el 8 y el 10 llevan un apoyo más suave.",
+      "sources": [
+        "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
+      ]
+    },
+    {
+      "id": "remate",
+      "label": "Remate · 10 11 12",
+      "accents": [
+        10,
+        11,
+        12
+      ],
+      "count_start": 12,
+      "explain": "Fórmula de cierre: tres golpes secos seguidos en 10, 11 y 12, y después silencio. El 10 es la gran referencia: allí acaban remates y llamadas.",
+      "sources": [
+        "https://esmuse.es/recursos/cajon-compas-bulerias.html",
+        "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
+      ]
+    }
+  ]
+}
