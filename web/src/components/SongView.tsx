@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { fetchGrid, fetchOnsets, fetchPalos, fetchSong, type Grid, type Onset, type Palo, type Song } from "../api";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { fetchGrid, fetchOnsets, fetchPalos, fetchSections, fetchSong, type Grid, type Onset, type Palo, type Section, type Song } from "../api";
 import {
   averagePattern,
   displayOrder,
@@ -12,8 +12,10 @@ import {
 import { CompasWheel } from "./CompasWheel";
 import { MeterMatch } from "./MeterMatch";
 import { PatternBars } from "./PatternBars";
-import { PlayerBar } from "./PlayerBar";
+import { PlayerBar, type Loop, type PlayerApi } from "./PlayerBar";
+import { SectionsPanel } from "./SectionsPanel";
 import { TempoCurve } from "./TempoCurve";
+import { Trainer } from "./Trainer";
 
 const LAYER_ORDER = ["drums", "guitar", "vocals", "bass", "other", "original"];
 const fmt = (v: number | null) => (v === null ? "—" : v.toFixed(2).replace(".", ","));
@@ -28,6 +30,10 @@ export function SongView({ slug }: { slug: string }) {
   const [beatIdx, setBeatIdx] = useState(-1);
   const [palos, setPalos] = useState<Palo[]>([]);
   const [view, setView] = useState({ id: "palo", shift: 0 });
+  const [sections, setSections] = useState<Section[]>([]);
+  const [loop, setLoop] = useState<Loop | null>(null);
+  const [training, setTraining] = useState(false);
+  const player = useRef<PlayerApi>(null);
 
   useEffect(() => {
     fetchPalos().then(setPalos, () => setPalos([]));
@@ -40,6 +46,10 @@ export function SongView({ slug }: { slug: string }) {
       setCountStart(g.count_start);
       setLayer((current) => (current in s.layers ? current : Object.keys(s.layers)[0]));
     }, (e) => setError(String(e)));
+  }, [slug]);
+
+  useEffect(() => {
+    fetchSections(slug).then(setSections, () => setSections([]));
   }, [slug]);
 
   useEffect(() => {
@@ -127,6 +137,7 @@ export function SongView({ slug }: { slug: string }) {
               ))}
             </div>
           </div>
+          <Trainer grid={grid} accents={shownAccents} player={player} active={training} onActive={setTraining} />
           <dl className="facts">
             <div><dt className="eyebrow">Compases</dt><dd className="mono">{fullCycles}</dd></div>
             <div><dt className="eyebrow">Parecido con el palo</dt><dd className="mono">{fmt(grid.profile_corr)}</dd></div>
@@ -136,6 +147,7 @@ export function SongView({ slug }: { slug: string }) {
         </aside>
 
         <div className="main-col">
+          <SectionsPanel sections={sections} loop={loop} onLoop={setLoop} player={player} />
           <MeterMatch
             matches={matches}
             selected={view.id}
@@ -155,6 +167,7 @@ export function SongView({ slug }: { slug: string }) {
                 parecido {fmt(layerCorr)}
               </span>
             </div>
+            <span className="eyebrow chips-label">Ver el patrón de</span>
             <div className="chips" role="group" aria-label="Capa">
               {layers.map((l) => (
                 <button key={l} className="chip" aria-pressed={l === layer} onClick={() => setLayer(l)}>
@@ -192,7 +205,17 @@ export function SongView({ slug }: { slug: string }) {
           </section>
         </div>
       </div>
-      <PlayerBar slug={slug} layers={song.layers} beats={grid.beats} onBeat={setBeatIdx} />
+      <PlayerBar
+        ref={player}
+        slug={slug}
+        layers={song.layers}
+        beats={grid.beats}
+        onBeat={setBeatIdx}
+        sections={sections}
+        loop={loop}
+        onLoop={setLoop}
+        lockSpace={training}
+      />
     </article>
   );
 }

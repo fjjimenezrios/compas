@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchGuide, fetchPalos, fetchSongs, type Form, type Palo, type SongSummary } from "../api";
+import { PALMAS_Y_CAJON } from "../rhythm";
 import { prioritize, splitSections, type Section } from "../study";
 import { MetronomeWheel } from "./MetronomeWheel";
 import { startingTempo, TempoControl, tempoBounds } from "./TempoControl";
@@ -26,6 +27,13 @@ export function DocsIndex() {
         <h1>Documentación</h1>
         <p className="muted">Para entender cada palo: cómo se cuenta, dónde van los acentos y cómo suena.</p>
       </header>
+      <a className="panel quiz-banner" href="#test">
+        <span>
+          <b>Ponte a prueba</b>
+          <small className="muted">Preguntas rápidas sacadas de las guías, con el metrónomo para comprobar las respuestas.</small>
+        </span>
+        <span className="chip accent">Hacer el test →</span>
+      </a>
       <ul className="palo-grid">
         {ordered.map((p) => {
           const count = songs.filter((s) => s.palo === p.id).length;
@@ -74,7 +82,7 @@ function FormCard(props: { palo: Palo; form: Form; bpm: number; active: boolean;
   return (
     <article className="panel form-card" aria-label={form.label}>
       <div className="form-wheel">
-        <MetronomeWheel cycleLen={form.cycle_len ?? palo.cycle_len ?? 4} form={form} countStart={form.count_start} bpm={bpm} active={active} />
+        <MetronomeWheel cycleLen={form.cycle_len ?? palo.cycle_len ?? 4} form={form} countStart={form.count_start} bpm={bpm} active={active} sounds={PALMAS_Y_CAJON} cajon={palo.cajon} />
       </div>
       <div className="form-text">
         <h3>{form.label}</h3>
@@ -123,6 +131,7 @@ export function DocPalo({ id }: { id: string }) {
         <h1>{palo.name}</h1>
         <p className="muted">{palo.summary}</p>
         <div className="chips">
+          <a className="chip accent" href={`#test/${palo.id}`}>Test de {palo.name} →</a>
           <span className="chip">{palo.family}</span>
           {palo.cycle_len && <span className="chip">ciclo de {palo.cycle_len}</span>}
           {palo.tempo_bpm && <span className="chip">{palo.tempo_bpm[0]}–{palo.tempo_bpm[1]} BPM</span>}

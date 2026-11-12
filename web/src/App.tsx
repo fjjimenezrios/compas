@@ -3,6 +3,7 @@ import { ChordsPage } from "./components/ChordsPage";
 import { DocPalo, DocsIndex } from "./components/Docs";
 import { Library } from "./components/Library";
 import { MetronomePage } from "./components/MetronomePage";
+import { QuizPage } from "./components/Quiz";
 import { SongView } from "./components/SongView";
 import { saveTheme, savedTheme, systemTheme, type Theme } from "./theme";
 
@@ -11,7 +12,8 @@ export type Route =
   | { view: "song"; slug: string }
   | { view: "docs"; id?: string }
   | { view: "metronome"; id?: string }
-  | { view: "chords"; tab?: string };
+  | { view: "chords"; tab?: string }
+  | { view: "quiz"; id?: string };
 
 export function parseRoute(hash: string): Route {
   const path = decodeURIComponent(hash.replace(/^#/, ""));
@@ -19,12 +21,13 @@ export function parseRoute(hash: string): Route {
   if (head === "doc") return { view: "docs", id };
   if (head === "metronomo") return { view: "metronome", id };
   if (head === "acordes") return { view: "chords", tab: id };
+  if (head === "test") return { view: "quiz", id };
   return path ? { view: "song", slug: path } : { view: "library" };
 }
 
-const NAV: { view: Route["view"]; href: string; label: string }[] = [
+const NAV: { view: Route["view"]; href: string; label: string; short?: string }[] = [
   { view: "library", href: "#", label: "Biblioteca" },
-  { view: "docs", href: "#doc", label: "Documentación" },
+  { view: "docs", href: "#doc", label: "Documentación", short: "Docs" },
   { view: "metronome", href: "#metronomo", label: "Metrónomo" },
   { view: "chords", href: "#acordes", label: "Acordes" },
 ];
@@ -70,6 +73,8 @@ function Page({ route }: { route: Route }) {
       return <MetronomePage paloId={route.id} />;
     case "chords":
       return <ChordsPage tab={route.tab} />;
+    case "quiz":
+      return <QuizPage paloId={route.id} />;
     default:
       return <Library />;
   }
@@ -87,8 +92,8 @@ export function App() {
     return () => removeEventListener("hashchange", onHash);
   }, []);
 
-  // A song page belongs to the library section.
-  const section = route.view === "song" ? "library" : route.view;
+  // A song page belongs to the library, the test to the documentation.
+  const section = route.view === "song" ? "library" : route.view === "quiz" ? "docs" : route.view;
 
   return (
     <div className="app">
@@ -106,7 +111,8 @@ export function App() {
         <nav className="nav" aria-label="Secciones">
           {NAV.map((n) => (
             <a key={n.view} href={n.href} aria-current={section === n.view ? "page" : undefined}>
-              {n.label}
+              <span className={n.short ? "nav-full" : undefined}>{n.label}</span>
+              {n.short && <span className="nav-short" aria-hidden="true">{n.short}</span>}
             </a>
           ))}
         </nav>
@@ -115,6 +121,13 @@ export function App() {
       <main>
         <Page route={route} />
       </main>
+      <footer className="credits">
+        <p>
+          Palmas: <a href="https://commons.wikimedia.org/wiki/Category:Flamenco_samples_by_Santiago_S%C3%A1nchez_Cifuentes" target="_blank" rel="noopener noreferrer">Santiago Sánchez Cifuentes</a> (CC0).
+          Cajón: <a href="https://freesound.org/people/OldBassMan/packs/9321/" target="_blank" rel="noopener noreferrer">OldBassMan</a> en Freesound (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>).
+          Recortados y normalizados.
+        </p>
+      </footer>
     </div>
   );
 }

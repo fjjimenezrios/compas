@@ -10,6 +10,8 @@ describe("routes", () => {
     expect(parseRoute("#metronomo/tangos")).toEqual({ view: "metronome", id: "tangos" });
     expect(parseRoute("#acordes")).toEqual({ view: "chords", tab: undefined });
     expect(parseRoute("#acordes/flamencos")).toEqual({ view: "chords", tab: "flamencos" });
+    expect(parseRoute("#test")).toEqual({ view: "quiz", id: undefined });
+    expect(parseRoute("#test/rumba")).toEqual({ view: "quiz", id: "rumba" });
     expect(parseRoute("#alfileres-de-colores")).toEqual({ view: "song", slug: "alfileres-de-colores" });
   });
 });

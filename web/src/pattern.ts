@@ -15,7 +15,10 @@ export const layerName = (id: string) =>
 export const displayOrder = (cycleLen: number, countStart: number) =>
   Array.from({ length: cycleLen }, (_, k) => ((countStart - 1 + k) % cycleLen) + 1);
 
-/** pattern[beat - 1][sub] = summed strength per cycle on that position. */
+/**
+ * pattern[beat - 1][sub] = how hard the layer hits there on average. Each bar counts once, with its
+ * strongest hit: summing every detected attack would let a busy beat look stronger than an accented one.
+ */
 export function averagePattern(
   onsets: Onset[],
   cycleLen: number,
@@ -24,9 +27,15 @@ export function averagePattern(
 ): number[][] {
   const pattern = Array.from({ length: cycleLen }, () => new Array(subdivision).fill(0));
   if (!cycleCount) return pattern;
+  const strongest = new Map<string, number>();
   for (const o of onsets) {
-    if (o.beat === null) continue;
-    pattern[o.beat - 1][o.sub] += o.strength / cycleCount;
+    if (o.beat === null || o.cycle === null) continue;
+    const key = `${o.cycle}:${o.beat}:${o.sub}`;
+    strongest.set(key, Math.max(strongest.get(key) ?? 0, o.strength));
+  }
+  for (const [key, strength] of strongest) {
+    const [, beat, sub] = key.split(":").map(Number);
+    pattern[beat - 1][sub] += strength / cycleCount;
   }
   return pattern;
 }

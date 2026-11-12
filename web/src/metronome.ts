@@ -1,24 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import type { Form } from "./api";
 import { displayOrder } from "./pattern";
+import { clickSound, hitsForBeat, isRemateCycle, nextBpm, type CajonMap, type Ramp, type Remate, type SoundSet } from "./rhythm";
+import { playHit, preloadSamples } from "./sounds";
 
-export type Level = "accent" | "weak" | "normal";
+export { clickLevel, clickSound } from "./rhythm";
 
-export function clickLevel(form: Pick<Form, "accents" | "weak">, beat: number): Level {
-  if (form.accents.includes(beat)) return "accent";
-  return form.weak?.includes(beat) ? "weak" : "normal";
-}
-
-const GAIN: Record<Level, number> = { accent: 1, weak: 0.55, normal: 0.3 };
-const PITCH: Record<Level, number> = { accent: 1400, weak: 1000, normal: 700 };
-const START_PITCH = 2000;
 const OFFBEAT = { pitch: 520, gain: 0.14 };
-
-/** The count-start beat gets its own, higher pitch so the "1" (or the "12") is always audible. */
-export function clickSound(form: Pick<Form, "accents" | "weak">, beat: number, countStart: number) {
-  const level = clickLevel(form, beat);
-  return { pitch: beat === countStart ? START_PITCH : PITCH[level], gain: GAIN[level] };
-}
+const CLICK_ONLY: SoundSet = { click: true, palmas: false, cajon: false };
 
 function click(ctx: AudioContext, time: number, pitch: number, gain: number) {
   const osc = ctx.createOscillator();
@@ -31,19 +20,35 @@ function click(ctx: AudioContext, time: number, pitch: number, gain: number) {
   osc.stop(time + 0.07);
 }
 
-type Config = { cycleLen: number; form: Form; countStart: number; bpm: number };
+export type MetronomeConfig = {
+  cycleLen: number;
+  form: Form;
+  countStart: number;
+  bpm: number;
+  sounds?: SoundSet;
+  cajon?: CajonMap;
+  remate?: Remate | null;
+  /** Play the remate on every Nth bar; 0 or undefined = never. */
+  remateEvery?: number;
+  ramp?: Ramp | null;
+  /** Use the recordings of palmas and cajón (default) or force the synthesized sounds. */
+  recorded?: boolean;
+};
+
+export type MetronomeState = { beat: number | null; bpm: number; cycle: number };
 
 const LOOKAHEAD_S = 0.12;
 const TICK_MS = 25;
 
 /**
- * Web Audio metronome. Clicks are scheduled slightly ahead of the audio clock (the usual
- * lookahead pattern) so timing doesn't depend on setInterval jitter. `bpm` is read live, so
- * moving the slider doesn't restart the count; changing the form or count start does.
- * Returns the beat number currently sounding, or null when stopped.
+ * Web Audio metronome. Sounds are scheduled slightly ahead of the audio clock (the usual lookahead
+ * pattern) so timing doesn't depend on setInterval jitter. Everything except the form and the count
+ * start is read live, so changing the tempo or the sounds doesn't restart the count. With a ramp the
+ * tempo rises as the bars go by; moving the tempo slider starts the ramp again from that value.
+ * Returns the beat sounding now (or null when stopped) and the tempo actually in use.
  */
-export function useMetronome(active: boolean, config: Config): number | null {
-  const [current, setCurrent] = useState<number | null>(null);
+export function useMetronome(active: boolean, config: MetronomeConfig): MetronomeState {
+  const [state, setState] = useState<MetronomeState>({ beat: null, bpm: config.bpm, cycle: 0 });
   const live = useRef(config);
   live.current = config;
 
@@ -51,20 +56,45 @@ export function useMetronome(active: boolean, config: Config): number | null {
     if (!active) return;
     const ctx = new AudioContext();
     void ctx.resume();
-    const due: { time: number; beat: number }[] = [];
+    void preloadSamples();
+    const due: (MetronomeState & { time: number })[] = [];
     let next = ctx.currentTime + 0.08;
     let index = 0;
+    let cycle = 0;
+    let base = live.current.bpm;
+    let seenBpm = base;
 
     const schedule = () => {
-      const { cycleLen, form, countStart, bpm } = live.current;
-      const order = displayOrder(cycleLen, countStart);
-      const period = 60 / bpm;
       while (next < ctx.currentTime + LOOKAHEAD_S) {
-        const beat = order[index % cycleLen];
-        const { pitch, gain } = clickSound(form, beat, countStart);
-        click(ctx, next, pitch, gain);
-        if (form.offbeats) click(ctx, next + period / 2, OFFBEAT.pitch, OFFBEAT.gain);
-        due.push({ time: next, beat });
+        const cfg = live.current;
+        if (cfg.bpm !== seenBpm) {
+          base = cfg.bpm;
+          seenBpm = cfg.bpm;
+        }
+        const order = displayOrder(cfg.cycleLen, cfg.countStart);
+        const pos = index % cfg.cycleLen;
+        if (pos === 0 && index > 0) {
+          cycle++;
+          base = nextBpm(base, cycle, cfg.ramp);
+        }
+        const beat = order[pos];
+        const sounds = cfg.sounds ?? CLICK_ONLY;
+        const period = 60 / base;
+
+        if (sounds.click) {
+          const { pitch, gain } = clickSound(cfg.form, beat, cfg.countStart);
+          click(ctx, next, pitch, gain);
+          if (cfg.form.offbeats) click(ctx, next + period / 2, OFFBEAT.pitch, OFFBEAT.gain);
+        }
+        const hits = hitsForBeat({
+          form: cfg.form, beat, order, sounds, cajon: cfg.cajon, remate: cfg.remate,
+          remateCycle: isRemateCycle(cycle, cfg.remateEvery ?? 0),
+        });
+        const recorded = cfg.recorded ?? true;
+        for (const h of hits) playHit(ctx, next, h.kind, h.gain, recorded);
+        if (cfg.form.offbeats && sounds.palmas) playHit(ctx, next + period / 2, "clapSoft", 0.5, recorded);
+
+        due.push({ time: next, beat, bpm: Math.round(base), cycle });
         next += period;
         index++;
       }
@@ -73,9 +103,9 @@ export function useMetronome(active: boolean, config: Config): number | null {
 
     let raf = 0;
     const draw = () => {
-      let latest: number | null = null;
-      while (due.length && due[0].time <= ctx.currentTime) latest = due.shift()!.beat;
-      if (latest !== null) setCurrent(latest);
+      let latest: (MetronomeState & { time: number }) | null = null;
+      while (due.length && due[0].time <= ctx.currentTime) latest = due.shift()!;
+      if (latest) setState({ beat: latest.beat, bpm: latest.bpm, cycle: latest.cycle });
       raf = requestAnimationFrame(draw);
     };
     raf = requestAnimationFrame(draw);
@@ -84,9 +114,9 @@ export function useMetronome(active: boolean, config: Config): number | null {
       clearInterval(timer);
       cancelAnimationFrame(raf);
       void ctx.close();
-      setCurrent(null);
+      setState({ beat: null, bpm: live.current.bpm, cycle: 0 });
     };
   }, [active, config.cycleLen, config.form.id, config.countStart]);
 
-  return active ? current : null;
+  return active ? state : { beat: null, bpm: config.bpm, cycle: 0 };
 }

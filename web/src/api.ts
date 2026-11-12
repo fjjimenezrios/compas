@@ -91,6 +91,8 @@ export type Palo = {
   status: string;
   summary?: string;
   forms?: Form[];
+  cajon?: Record<string, "G" | "A">;
+  remate?: { beats: number[]; cajon: Record<string, "G" | "A"> };
 };
 
 // The published build has no Python server: `flamenco-study export-static` writes these endpoints as .json files.
@@ -109,4 +111,20 @@ export async function fetchGuide(id: string): Promise<string | null> {
   // The dev server answers unknown paths with index.html, so a 200 isn't enough.
   if (!res.ok || (res.headers.get("content-type") ?? "").includes("text/html")) return null;
   return res.text();
+}
+
+export type SectionKind = "cante" | "toque" | "instrumental";
+export type Section = { start: number; end: number; kind: SectionKind };
+
+export const SECTION_LABELS: Record<SectionKind, string> = {
+  cante: "Cante",
+  toque: "Solo guitarra",
+  instrumental: "Sin cante ni guitarra",
+};
+
+/** Stretches of cante and solo guitar found by the analysis; empty for songs analysed before it existed. */
+export async function fetchSections(slug: string): Promise<Section[]> {
+  const res = await fetch(`songs/${slug}/analysis/sections.json`);
+  if (!res.ok || (res.headers.get("content-type") ?? "").includes("text/html")) return [];
+  return res.json();
 }
