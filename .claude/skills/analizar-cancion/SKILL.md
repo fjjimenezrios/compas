@@ -18,6 +18,7 @@ La app es una web local (`http://localhost:8766`). Las canciones se añaden **so
    ```
    Crea `songs/<slug>/`. Reanalizar la misma canción reutiliza la carpeta y **nunca** toca `user/overrides.json`.
 4. **Servidor.** Si `curl -sf localhost:8766/api/songs` falla, arranca `uv run --project analysis flamenco-study serve` en segundo plano. Si `web/dist` no existe, antes `npm --prefix web run build`.
+   El análisis genera también `analysis/sections.json` (cante / solo guitarra) y la web ofrece el reproductor multipista, el bucle por secciones y el entrenador de palmas sin pasos extra.
 5. **Resume en 3 líneas** leyendo `songs/<slug>/meta.json` y `analysis/grid.json`: tempo, `profile_corr` (parecido con la plantilla del palo) y compases de baja confianza. Si el parecido es bajo (< 0,7), dilo tal cual y sugiere mirar las capas en la web: puede ser que las palmas marquen distinto que la guitarra, o que el palo indicado no sea el que suena. **No cambies el palo por tu cuenta.**
 6. Dale el enlace `http://localhost:8766/#<slug>`.
 
