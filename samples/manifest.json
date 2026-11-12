@@ -1,0 +1,29 @@
+{
+  "clap": [
+    "palma-fuerte-1.wav",
+    "palma-fuerte-2.wav",
+    "palma-fuerte-3.wav",
+    "palma-fuerte-4.wav"
+  ],
+  "clapSoft": [
+    "palma-sorda-1.wav",
+    "palma-sorda-2.wav",
+    "palma-sorda-3.wav",
+    "palma-sorda-4.wav"
+  ],
+  "bass": [
+    "cajon-grave-1.wav",
+    "cajon-grave-2.wav",
+    "cajon-grave-3.wav"
+  ],
+  "slap": [
+    "cajon-agudo-1.wav",
+    "cajon-agudo-2.wav",
+    "cajon-agudo-3.wav"
+  ],
+  "ghost": [
+    "cajon-fantasma-1.wav",
+    "cajon-fantasma-2.wav",
+    "cajon-fantasma-3.wav"
+  ]
+}

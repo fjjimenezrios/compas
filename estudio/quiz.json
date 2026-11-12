@@ -1,0 +1,530 @@
+[
+ {
+  "id": "bul-inicio",
+  "palo": "bulerias",
+  "type": "choice",
+  "q": "¿Desde qué tiempo se suele empezar a contar la bulería?",
+  "options": [
+   "Desde el 1",
+   "Desde el 12",
+   "Desde el 6",
+   "Desde el 3"
+  ],
+  "answer": 1,
+  "explain": "Se suele empezar a contar en el 12: funciona como el «uno» real del ciclo y todo resuelve en él.",
+  "source": "https://allflamenco.net/blog/guia-completa-del-baile-por-bulerias-historia-compas-y-figuras-clave/"
+ },
+ {
+  "id": "bul-acentos",
+  "palo": "bulerias",
+  "type": "beats",
+  "q": "Marca los tiempos con acento de la bulería (cuenta de 12).",
+  "answer": [
+   12,
+   3,
+   6,
+   8,
+   10
+  ],
+  "cycle_len": 12,
+  "form": "tradicional",
+  "explain": "Los acentos tradicionales son el 12, el 3, el 6, el 8 y el 10.",
+  "source": "https://allflamenco.net/blog/guia-completa-del-baile-por-bulerias-historia-compas-y-figuras-clave/"
+ },
+ {
+  "id": "bul-remate",
+  "palo": "bulerias",
+  "type": "beats",
+  "q": "¿En qué tiempos va el remate de la bulería?",
+  "answer": [
+   10,
+   11,
+   12
+  ],
+  "cycle_len": 12,
+  "form": "remate",
+  "explain": "El remate acentúa con fuerza el 10, el 11 y el 12: tres golpes secos seguidos de silencio.",
+  "source": "https://esmuse.es/recursos/cajon-compas-bulerias.html"
+ },
+ {
+  "id": "bul-al-seis",
+  "palo": "bulerias",
+  "type": "choice",
+  "q": "En Jerez la bulería se suele contar…",
+  "options": [
+   "Al 12",
+   "Al 6",
+   "Al 8",
+   "Al 3"
+  ],
+  "answer": 1,
+  "explain": "Se cuenta al 6, partiendo el ciclo en dos mitades: el 12 y el 6 son fuertes, y el 2, 4, 8 y 10 llevan un apoyo más suave.",
+  "source": "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
+ },
+ {
+  "id": "bul-tempo",
+  "palo": "bulerias",
+  "type": "choice",
+  "q": "¿Qué rango de tempo se trabaja en la práctica didáctica moderna?",
+  "options": [
+   "60–120 BPM",
+   "150–240 BPM",
+   "90–140 BPM",
+   "250–320 BPM"
+  ],
+  "answer": 1,
+  "explain": "Se trabaja entre 150 y 240 pulsos por minuto.",
+  "source": "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
+ },
+ {
+  "id": "bul-golpe",
+  "palo": "bulerias",
+  "type": "choice",
+  "q": "¿Qué es la bulería al golpe?",
+  "options": [
+   "La más rápida de la fiesta",
+   "Una bulería lenta, de escucha",
+   "Una bulería sin cante",
+   "La que se baila en pareja"
+  ],
+  "answer": 1,
+  "explain": "La bulería al golpe (o por soleá) es más lenta, de velocidad media y pensada para el cante de escucha.",
+  "source": "https://www.juntadeandalucia.es/cultura/flamenco/content/buler%C3%ADas-0"
+ },
+ {
+  "id": "bul-origen",
+  "palo": "bulerias",
+  "type": "choice",
+  "q": "¿De qué palo toma el compás la bulería?",
+  "options": [
+   "De la soleá",
+   "De la seguiriya",
+   "De los tangos",
+   "De los fandangos"
+  ],
+  "answer": 0,
+  "explain": "Nació de la soleá, de la que toma el compás y le aumenta el ritmo.",
+  "source": "https://www.juntadeandalucia.es/cultura/flamenco/content/buler%C3%ADas-0"
+ },
+ {
+  "id": "ale-acentos",
+  "palo": "alegrias-de-cadiz",
+  "type": "beats",
+  "q": "Marca los acentos de las alegrías (cuenta de 12).",
+  "answer": [
+   3,
+   6,
+   8,
+   10,
+   12
+  ],
+  "cycle_len": 12,
+  "form": "ligera",
+  "explain": "Es el compás de 12 de la soleá, con acentos en 3, 6, 8, 10 y 12, pero más ligero y danzante.",
+  "source": "https://allflamenco.net/blog/cantinas-y-alegrias-historia-metrica-y-alma-de-cadiz-en-el-flamenco/"
+ },
+ {
+  "id": "ale-modo",
+  "palo": "alegrias-de-cadiz",
+  "type": "choice",
+  "q": "¿En qué modo se cantan las alegrías?",
+  "options": [
+   "Frigio, como la soleá",
+   "Mayor, como la jota",
+   "Menor natural",
+   "Dórico"
+  ],
+  "answer": 1,
+  "explain": "La tonalidad mayor, «como la jota», diferencia a las alegrías de las soleares y las bulerías.",
+  "source": "https://zocoflamenco.com/noticias/alegrias-flamencas-origen-compas-cante-baile/"
+ },
+ {
+  "id": "ale-tempo",
+  "palo": "alegrias-de-cadiz",
+  "type": "choice",
+  "q": "Las cantiñas se cantan a un tempo de…",
+  "options": [
+   "60–90 BPM",
+   "120–160 BPM",
+   "200–260 BPM",
+   "30–50 BPM"
+  ],
+  "answer": 1,
+  "explain": "Se cantan a tempo vivo, entre 120 y 160 pulsos por minuto.",
+  "source": "https://en.wikipedia.org/wiki/Canti%C3%B1as"
+ },
+ {
+  "id": "sol-tempo",
+  "palo": "soleares",
+  "type": "choice",
+  "q": "¿Cómo es el tempo de la soleá?",
+  "options": [
+   "Lento y pesado",
+   "Rápido y ligero",
+   "Muy rápido",
+   "Sin pulso fijo"
+  ],
+  "answer": 0,
+  "explain": "La soleá tiene un tempo lento y pesado, aunque su compás es igual que el de las alegrías y las bulerías.",
+  "source": "https://es.wikipedia.org/wiki/Sole%C3%A1_(flamenco)"
+ },
+ {
+  "id": "sol-esquema",
+  "palo": "soleares",
+  "type": "choice",
+  "q": "¿Qué agrupación tiene el ciclo de 12 de la soleá?",
+  "options": [
+   "3+3+3+3",
+   "3+2+2+2+3",
+   "2+2+2+2+2+2",
+   "6+6"
+  ],
+  "answer": 1,
+  "explain": "Visto desde la teoría clásica, es un compás de 12 pulsos con el esquema 3+2+2+2+3.",
+  "source": "https://es.wikipedia.org/wiki/Sole%C3%A1_(flamenco)"
+ },
+ {
+  "id": "sol-tono",
+  "palo": "soleares",
+  "type": "choice",
+  "q": "¿Cuál es el tono habitual de la soleá?",
+  "options": [
+   "La frigio (por medio)",
+   "Mi frigio (por arriba)",
+   "Do mayor",
+   "Re menor"
+  ],
+  "answer": 1,
+  "explain": "Se puede tocar en La frigio (por medio), pero su tono habitual es Mi frigio (toque por arriba).",
+  "source": "https://es.wikipedia.org/wiki/Sole%C3%A1_(flamenco)"
+ },
+ {
+  "id": "sol-acentos",
+  "palo": "soleares",
+  "type": "beats",
+  "q": "Marca los acentos de la soleá (cuenta de 12).",
+  "answer": [
+   3,
+   6,
+   8,
+   10,
+   12
+  ],
+  "cycle_len": 12,
+  "form": "clasico",
+  "explain": "Con el esquema 3+2+2+2+3 empezando en el 3, los grupos arrancan en 3, 6, 8, 10 y 12.",
+  "source": "https://es.wikipedia.org/wiki/Sole%C3%A1_(flamenco)"
+ },
+ {
+  "id": "tan-compas",
+  "palo": "tangos",
+  "type": "choice",
+  "q": "¿En qué compás se tocan los tangos flamencos?",
+  "options": [
+   "3/4",
+   "4/4",
+   "12 tiempos",
+   "5 tiempos"
+  ],
+  "answer": 1,
+  "explain": "Se ejecutan a compás de 4/4.",
+  "source": "https://www.juntadeandalucia.es/cultura/flamenco/content/tangos"
+ },
+ {
+  "id": "tan-tientos",
+  "palo": "tangos",
+  "type": "choice",
+  "q": "Los tientos son el hermano lento de los tangos. ¿Dónde acentúan?",
+  "options": [
+   "En el 1",
+   "En el 2",
+   "En el 3",
+   "En el 4"
+  ],
+  "answer": 1,
+  "explain": "En los tientos el acento cae en el tiempo 2, con contratiempos.",
+  "source": "https://en.wikipedia.org/wiki/Tientos_(flamenco)"
+ },
+ {
+  "id": "tan-aprender",
+  "palo": "tangos",
+  "type": "choice",
+  "q": "¿Por qué es un palo ideal para empezar?",
+  "options": [
+   "Su pulso de 4 se oye más fácil que los ciclos de 12",
+   "Es el más lento",
+   "No tiene acentos",
+   "Se canta sin guitarra"
+  ],
+  "answer": 0,
+  "explain": "Su pulso de 4 es más fácil de oír que los ciclos de 12 de la soleá o las bulerías.",
+  "source": "https://en.wikipedia.org/wiki/Tango_(flamenco)"
+ },
+ {
+  "id": "sev-compas",
+  "palo": "sevillanas",
+  "type": "choice",
+  "q": "¿En qué compás van las sevillanas?",
+  "options": [
+   "4/4",
+   "3/4",
+   "12 tiempos",
+   "2/4"
+  ],
+  "answer": 1,
+  "explain": "Es un compás ternario de 3/4: un tiempo fuerte y dos flojos, como un vals.",
+  "source": "https://es.wikipedia.org/wiki/Sevillanas"
+ },
+ {
+  "id": "sev-fuerte",
+  "palo": "sevillanas",
+  "type": "beats",
+  "q": "¿En qué tiempo va el golpe fuerte?",
+  "answer": [
+   1
+  ],
+  "cycle_len": 3,
+  "form": "vals",
+  "explain": "Un tiempo fuerte (el 1) y dos flojos, contado como un vals: UN-dos-tres.",
+  "source": "https://es.wikipedia.org/wiki/Sevillanas"
+ },
+ {
+  "id": "sev-coplas",
+  "palo": "sevillanas",
+  "type": "choice",
+  "q": "¿Cuántas coplas tiene una serie de sevillanas?",
+  "options": [
+   "Dos",
+   "Tres",
+   "Cuatro",
+   "Seis"
+  ],
+  "answer": 2,
+  "explain": "Se interpretan en series de cuatro coplas, cada una con melodía distinta.",
+  "source": "https://es.wikipedia.org/wiki/Sevillanas"
+ },
+ {
+  "id": "sev-palo",
+  "palo": "sevillanas",
+  "type": "choice",
+  "q": "¿Son las sevillanas propiamente un palo flamenco?",
+  "options": [
+   "Sí, el más antiguo",
+   "No: son folclore aflamencado",
+   "Solo las rocieras",
+   "Solo las corraleras"
+  ],
+  "answer": 1,
+  "explain": "No se consideran propiamente un palo del flamenco, aunque reúnen elementos estéticos flamencos.",
+  "source": "https://es.wikipedia.org/wiki/Sevillanas"
+ },
+ {
+  "id": "fan-compas",
+  "palo": "fandangos-de-huelva",
+  "type": "choice",
+  "q": "¿Con qué otro palo comparten compás los fandangos de Huelva?",
+  "options": [
+   "Las sevillanas",
+   "La soleá",
+   "Los tangos",
+   "La rumba"
+  ],
+  "answer": 0,
+  "explain": "Es un 3/4 con el tiempo 1 fuerte y el 2 y el 3 flojos: el mismo compás que las sevillanas.",
+  "source": "https://www.juntadeandalucia.es/cultura/flamenco/content/unidad-de-trabajo-2-los-fandangos-de-huelva"
+ },
+ {
+  "id": "fan-resolucion",
+  "palo": "fandangos-de-huelva",
+  "type": "beats",
+  "q": "En el ciclo de 12, ¿en qué tiempo cae la resolución armónica?",
+  "answer": [
+   9
+  ],
+  "cycle_len": 12,
+  "form": "resolucion-9",
+  "explain": "El análisis musicológico sitúa la resolución armónica siempre en el tiempo 9 del ciclo.",
+  "source": "https://iftawm.org/journal/oldsite/articles/2017c/Bernat_AAWM_Vol_6_1.pdf"
+ },
+ {
+  "id": "fan-palilleo",
+  "palo": "fandangos-de-huelva",
+  "type": "choice",
+  "q": "¿Qué es el palilleo?",
+  "options": [
+   "Golpe de puño en el 1 y apertura de los dedos en el 2 y el 3",
+   "Un rasgueo de guitarra",
+   "Un zapateado",
+   "Un tipo de copla"
+  ],
+  "answer": 0,
+  "explain": "Es la forma más flamenca de marcar el 3/4: puño cerrado en el 1 y apertura progresiva de los dedos en el 2 y el 3.",
+  "source": "https://www.juntadeandalucia.es/cultura/flamenco/content/unidad-de-trabajo-2-los-fandangos-de-huelva"
+ },
+ {
+  "id": "rum-acentos",
+  "palo": "rumba",
+  "type": "beats",
+  "q": "Marca los acentos de la rumba en su compás de 4.",
+  "answer": [
+   2,
+   4
+  ],
+  "cycle_len": 4,
+  "form": "dos-y-cuatro",
+  "explain": "Es un compás binario de 4/4 con los acentos en los tiempos 2 y 4.",
+  "source": "https://en.wikipedia.org/wiki/Rumba_flamenca"
+ },
+ {
+  "id": "rum-tresillo",
+  "palo": "rumba",
+  "type": "beats",
+  "q": "Marca el comienzo de cada grupo del patrón 3+3+2 (8 tiempos).",
+  "answer": [
+   1,
+   4,
+   7
+  ],
+  "cycle_len": 8,
+  "form": "tresillo",
+  "explain": "Ocho tiempos agrupados en 3+3+2: los grupos empiezan en el 1, el 4 y el 7.",
+  "source": "https://en.wikipedia.org/wiki/Rumba_flamenca"
+ },
+ {
+  "id": "rum-ventilador",
+  "palo": "rumba",
+  "type": "choice",
+  "q": "¿Cómo se llama el rasgueo propio de la rumba?",
+  "options": [
+   "Ventilador",
+   "Picado",
+   "Alzapúa",
+   "Temblor"
+  ],
+  "answer": 0,
+  "explain": "El ventilador es un rasgueo de tres golpes de velocidad creciente que no existe en otros estilos flamencos.",
+  "source": "https://en.wikipedia.org/wiki/Rumba_flamenca"
+ },
+ {
+  "id": "rum-tempo",
+  "palo": "rumba",
+  "type": "choice",
+  "q": "¿Qué tempo aproximado tiene la rumba?",
+  "options": [
+   "100–120 BPM",
+   "180–240 BPM",
+   "40–60 BPM",
+   "300 BPM"
+  ],
+  "answer": 0,
+  "explain": "Ronda los 100-120 BPM, más lento que palos tradicionales como las bulerías.",
+  "source": "https://en.wikipedia.org/wiki/Rumba_flamenca"
+ },
+ {
+  "id": "seg-inversion",
+  "palo": "seguiriyas",
+  "type": "choice",
+  "q": "¿Qué relación métrica tiene la seguiriya con la soleá?",
+  "options": [
+   "Es su inversión: 3/4 + 6/8 en vez de 6/8 + 3/4",
+   "Es idéntica",
+   "Es el doble de rápida",
+   "No tienen relación"
+  ],
+  "answer": 0,
+  "explain": "La soleá alterna 6/8 + 3/4; la seguiriya los alterna en orden inverso.",
+  "source": "https://expoflamenco.com/revista/el-enigma-del-compas-de-seguiriya/"
+ },
+ {
+  "id": "seg-acentos",
+  "palo": "seguiriyas",
+  "type": "beats",
+  "q": "Marca los acentos del esquema de 12 de la seguiriya.",
+  "answer": [
+   3,
+   6,
+   8,
+   10,
+   12
+  ],
+  "cycle_len": 12,
+  "form": "junta",
+  "explain": "El esquema de la Junta de Andalucía acentúa el 3, 6, 8, 10 y 12.",
+  "source": "https://www.juntadeandalucia.es/cultura/flamenco/content/unidad-de-trabajo-16-seguiriyas-serrana-y-liviana"
+ },
+ {
+  "id": "seg-acefala",
+  "palo": "seguiriyas",
+  "type": "choice",
+  "q": "¿Qué significa que su ritmo sea «acéfalo»?",
+  "options": [
+   "Que la primera negra del 3/4 queda en silencio",
+   "Que no lleva guitarra",
+   "Que se canta sin letra",
+   "Que empieza muy rápido"
+  ],
+  "answer": 0,
+  "explain": "Es un ritmo «sin cabeza»: la primera negra del 3/4 queda en silencio, una de las razones de su dificultad.",
+  "source": "https://expoflamenco.com/revista/el-enigma-del-compas-de-seguiriya/"
+ },
+ {
+  "id": "seg-modo",
+  "palo": "seguiriyas",
+  "type": "choice",
+  "q": "¿En qué modo toca habitualmente la guitarra por seguiriyas?",
+  "options": [
+   "Frigio, habitualmente La frigio (por medio)",
+   "Mayor",
+   "Menor armónico",
+   "Lidio"
+  ],
+  "answer": 0,
+  "explain": "El tono de la guitarra es frigio, habitualmente La frigio, por medio.",
+  "source": "https://en.wikipedia.org/wiki/Siguiriyas"
+ },
+ {
+  "id": "pas-origen",
+  "palo": "pasodoble",
+  "type": "choice",
+  "q": "¿De qué origen es la marcha del pasodoble?",
+  "options": [
+   "Militar: unos 120 pasos por minuto",
+   "Religioso",
+   "Marinero",
+   "Solo taurino"
+  ],
+  "answer": 0,
+  "explain": "Es una marcha española rápida de origen militar: los 120 pasos por minuto de la infantería dan nombre al «paso doble».",
+  "source": "https://en.wikipedia.org/wiki/Pasodoble"
+ },
+ {
+  "id": "pas-comparsa",
+  "palo": "pasodoble",
+  "type": "choice",
+  "q": "En el Carnaval de Cádiz, ¿qué agrupación tiene el pasodoble como pieza más valorada?",
+  "options": [
+   "La comparsa",
+   "El coro",
+   "El cuarteto",
+   "El romancero"
+  ],
+  "answer": 0,
+  "explain": "En la comparsa el pasodoble es la pieza más valorada del concurso.",
+  "source": "https://es.wikipedia.org/wiki/Carnaval_de_C%C3%A1diz"
+ },
+ {
+  "id": "pas-tango",
+  "palo": "pasodoble",
+  "type": "choice",
+  "q": "¿Qué es el «tango» del Carnaval de Cádiz?",
+  "options": [
+   "Una pieza del coro, distinta del tango flamenco",
+   "El mismo tango flamenco",
+   "Un baile de pareja",
+   "Un pasodoble lento"
+  ],
+  "answer": 0,
+  "explain": "Es la pieza genuina del coro, y no es el tango flamenco.",
+  "source": "https://es.wikipedia.org/wiki/Carnaval_de_C%C3%A1diz"
+ }
+]

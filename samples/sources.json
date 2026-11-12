@@ -1,0 +1,121 @@
+{
+  "palma-fuerte-1.wav": {
+    "kind": "palma fuerte",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 83.59
+  },
+  "palma-fuerte-2.wav": {
+    "kind": "palma fuerte",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 92.59
+  },
+  "palma-fuerte-3.wav": {
+    "kind": "palma fuerte",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 22.85
+  },
+  "palma-fuerte-4.wav": {
+    "kind": "palma fuerte",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 41.97
+  },
+  "palma-sorda-1.wav": {
+    "kind": "palma sorda",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 23.22
+  },
+  "palma-sorda-2.wav": {
+    "kind": "palma sorda",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 47.21
+  },
+  "palma-sorda-3.wav": {
+    "kind": "palma sorda",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 97.84
+  },
+  "palma-sorda-4.wav": {
+    "kind": "palma sorda",
+    "author": "Santiago Sánchez Cifuentes",
+    "license": "CC0 1.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Palmas_sevillanas_(flamenco_clapping),_160_BPM.ogg",
+    "at_s": 34.47
+  },
+  "cajon-grave-1.wav": {
+    "kind": "cajón grave",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151030/",
+    "original": "PK-M1.8.wav"
+  },
+  "cajon-grave-2.wav": {
+    "kind": "cajón grave",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151034/",
+    "original": "PK-M3.3.wav"
+  },
+  "cajon-grave-3.wav": {
+    "kind": "cajón grave",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151032/",
+    "original": "PK-M3.9.wav"
+  },
+  "cajon-agudo-1.wav": {
+    "kind": "cajón agudo",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151038/",
+    "original": "SN_L-4.2.wav"
+  },
+  "cajon-agudo-2.wav": {
+    "kind": "cajón agudo",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151048/",
+    "original": "SN_R-3.2.wav"
+  },
+  "cajon-agudo-3.wav": {
+    "kind": "cajón agudo",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151043/",
+    "original": "SN_L-6.7.wav"
+  },
+  "cajon-fantasma-1.wav": {
+    "kind": "cajón fantasma",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151040/",
+    "original": "SN_L-15.2.wav"
+  },
+  "cajon-fantasma-2.wav": {
+    "kind": "cajón fantasma",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151039/",
+    "original": "SN_L-16.2.wav"
+  },
+  "cajon-fantasma-3.wav": {
+    "kind": "cajón fantasma",
+    "author": "OldBassMan",
+    "license": "CC BY 4.0",
+    "url": "https://freesound.org/people/OldBassMan/sounds/151037/",
+    "original": "PK-M6.1.wav"
+  }
+}
