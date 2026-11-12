@@ -20,17 +20,43 @@ function pluck(audio: AudioContext, time: number, freq: number) {
   }
 }
 
-/** Strums the chord from the low string to the high one. */
-export function strum(frets: Frets) {
-  ctx ??= new AudioContext();
-  void ctx.resume();
-  const start = ctx.currentTime + 0.02;
+const recordings = new Map<string, Promise<AudioBuffer | null>>();
+
+function recording(audio: AudioContext, frets: Frets) {
+  const key = frets.map((f) => f ?? "x").join("-");
+  if (!recordings.has(key)) {
+    recordings.set(
+      key,
+      fetch(`${import.meta.env.BASE_URL}chords/${key}.mp3`)
+        .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(new Error(r.statusText))))
+        .then((data) => audio.decodeAudioData(data))
+        .catch(() => null),
+    );
+  }
+  return recordings.get(key)!;
+}
+
+function synthesized(audio: AudioContext, frets: Frets) {
+  const start = audio.currentTime + 0.02;
   let k = 0;
   frets.forEach((fret, i) => {
     if (fret === null) return;
-    const freq = 440 * 2 ** ((OPEN_MIDI[i] + fret - 69) / 12);
-    pluck(ctx!, start + k * 0.045, freq);
+    pluck(audio, start + k * 0.045, 440 * 2 ** ((OPEN_MIDI[i] + fret - 69) / 12));
     k++;
+  });
+}
+
+/** Plays the recorded nylon-guitar strum; falls back to the synthesized one if the file is missing. */
+export function strum(frets: Frets) {
+  ctx ??= new AudioContext();
+  const audio = ctx;
+  void audio.resume();
+  void recording(audio, frets).then((buffer) => {
+    if (!buffer) return synthesized(audio, frets);
+    const source = audio.createBufferSource();
+    source.buffer = buffer;
+    source.connect(audio.destination);
+    source.start();
   });
 }
 
