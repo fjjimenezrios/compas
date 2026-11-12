@@ -93,5 +93,28 @@
         "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
       ]
     }
+  ],
+  "cajon": {
+    "3": "G",
+    "6": "G",
+    "8": "A",
+    "10": "A",
+    "12": "G"
+  },
+  "remate": {
+    "beats": [
+      10,
+      11,
+      12
+    ],
+    "cajon": {
+      "10": "A",
+      "11": "A",
+      "12": "G"
+    }
+  },
+  "cajon_note": "Patrón base g g G | g g G | g A | g A | g G sobre los 12 tiempos y remate A A G en 10-11-12 (G = grave, A = agudo, g = nota fantasma).",
+  "cajon_sources": [
+    "https://esmuse.es/recursos/cajon-compas-bulerias.html"
   ]
 }
