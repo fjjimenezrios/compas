@@ -3,7 +3,7 @@
 App local para coger el compás de canciones flamencas: en qué tiempos del ciclo caen las palmas, la guitarra y el cante, con qué fuerza y cómo cambia a lo largo de la canción.
 
 - `analysis/`: pipeline en Python (demucs → Beat This!/librosa → ciclos → ataques por capa) y servidor local.
-- `web/`: interfaz React + Vite.
+- `web/`: interfaz React + Vite. Secciones: Biblioteca (canciones), Documentación (una guía por palo), Metrónomo (modo reloj) y Acordes (biblioteca de acordes, cejilla y acordes flamencos; la lógica está en `web/src/chords.ts` y sus tests comprueban que cada digitación contiene las notas del acorde).
 - `palos/`: definición de cada palo (datos, no código): ciclo, acentos y formas de acentuación para el metrónomo.
 - `estudio/<palo>.md`: guía de estudio de cada palo, con fuentes. Se ve en la sección Documentación.
 - `songs/<slug>/`: una carpeta por canción (ignorada por git salvo `_synthetic-bulerias`).
