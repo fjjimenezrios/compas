@@ -17,12 +17,13 @@
   ],
   "status": "verified",
   "sources": [
+    "https://es.wikipedia.org/wiki/Sole%C3%A1_(flamenco)",
     "https://studioflamenco.com/soleares",
     "https://revistas.um.es/flamenco/article/download/349671/254971/1200651"
   ],
   "tempo_note": "Rango orientativo; solo se usa para corregir errores de doble/mitad de tempo.",
   "default_bpm": 90,
-  "summary": "Ciclo de 12 tiempos lento. De él heredan el compás las bulerías y las alegrías.",
+  "summary": "Ciclo de 12 tiempos, lento y pesado. Tiene el mismo compás que las alegrías y las bulerías, con otro carácter.",
   "forms": [
     {
       "id": "clasico",
@@ -35,11 +36,28 @@
         12
       ],
       "count_start": 1,
-      "explain": "Ciclo de 12 tiempos con acentos en 3, 6, 8, 10 y 12. Es mucho más lento que la bulería. Las fuentes avisan de que el patrón de acentos ha cambiado con los años.",
+      "explain": "Ciclo de 12 tiempos con acentos en 3, 6, 8, 10 y 12, a un tempo lento y pesado: el mismo compás que alegrías y bulerías, con otro carácter.",
       "sources": [
+        "https://es.wikipedia.org/wiki/Sole%C3%A1_(flamenco)",
         "https://studioflamenco.com/soleares",
         "https://revistas.um.es/flamenco/article/download/349671/254971/1200651",
         "https://www.aprendiendoaserguitarrista.com/metronomo-flamenco/compas/bulerias/"
+      ]
+    },
+    {
+      "id": "tres-dos-dos-dos-tres",
+      "label": "Grupos 3+2+2+2+3 (desde el 3)",
+      "accents": [
+        3,
+        6,
+        8,
+        10,
+        12
+      ],
+      "count_start": 3,
+      "explain": "Visto desde la teoría clásica el ciclo empezaría en el 3 y se agrupa en 3+2+2+2+3. Es el mismo patrón: los acentos caen donde empieza cada grupo.",
+      "sources": [
+        "https://es.wikipedia.org/wiki/Sole%C3%A1_(flamenco)"
       ]
     }
   ]

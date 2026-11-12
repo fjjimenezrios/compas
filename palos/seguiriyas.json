@@ -1,12 +1,87 @@
 {
   "name": "Seguiriyas",
   "family": "amalgama",
-  "cycle_len": null,
-  "accents": null,
+  "cycle_len": 12,
+  "accents": [
+    3,
+    6,
+    8,
+    10,
+    12
+  ],
   "count_start": 1,
   "subdivision": 2,
   "tempo_bpm": null,
-  "status": "TODO",
-  "sources": [],
-  "todo": "Rellenar ciclo/acentos/tempo solo con fuentes verificadas (hito 6)."
+  "status": "verified",
+  "sources": [
+    "https://www.juntadeandalucia.es/cultura/flamenco/content/unidad-de-trabajo-16-seguiriyas-serrana-y-liviana"
+  ],
+  "summary": "Cante jondo de compás de amalgama: la inversión métrica de la soleá, con rubato.",
+  "forms": [
+    {
+      "id": "junta",
+      "label": "Esquema de 12 · 3 6 8 10 12",
+      "accents": [
+        3,
+        6,
+        8,
+        10,
+        12
+      ],
+      "count_start": 1,
+      "explain": "Doce posiciones con acentos en 3, 6, 8, 10 y 12. Es la inversión métrica de la soleá: 3/4 + 6/8 en lugar de 6/8 + 3/4, y empieza con un silencio.",
+      "sources": [
+        "https://www.juntadeandalucia.es/cultura/flamenco/content/unidad-de-trabajo-16-seguiriyas-serrana-y-liviana",
+        "https://expoflamenco.com/revista/el-enigma-del-compas-de-seguiriya/"
+      ]
+    },
+    {
+      "id": "desde-el-8",
+      "label": "Como soleá desde el 8",
+      "accents": [
+        3,
+        6,
+        8,
+        10,
+        12
+      ],
+      "count_start": 8,
+      "explain": "El mismo patrón contado como una soleá que empieza en el 8: los acentos suenan en 8, 10, 12, 3 y 6.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Siguiriyas"
+      ]
+    },
+    {
+      "id": "desde-el-12",
+      "label": "Contaje clásico de baile · desde el 12",
+      "accents": [
+        3,
+        6,
+        8,
+        10,
+        12
+      ],
+      "count_start": 12,
+      "explain": "El contaje clásico de baile empieza en el 12 («y 12-1-2-3…»): los acentos suenan en el 3, 6, 8, 10 y 12, pero la cuenta arranca por el 12.",
+      "sources": [
+        "https://expoflamenco.com/revista/el-enigma-del-compas-de-seguiriya/"
+      ]
+    },
+    {
+      "id": "1-3-5-8-11",
+      "label": "Otra cuenta · 1 3 5 8 11",
+      "accents": [
+        1,
+        3,
+        5,
+        8,
+        11
+      ],
+      "count_start": 1,
+      "explain": "Otra convención muy citada, con acentos en 1, 3, 5, 8 y 11. Es el mismo patrón con otro punto de arranque.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Siguiriyas"
+      ]
+    }
+  ]
 }
